@@ -32,3 +32,30 @@ rank_desc = rank.describe()
 prev_rank = f500['previous_rank']
 print(prev_rank.describe())
 prev_rank_desc=prev_rank.describe()
+
+# The method chaining skill
+countries_counts = f500["country"].value_counts()
+
+#More specifically
+print('The number of firms from China: ', f500["country"].value_counts().loc["China"])
+
+#Finding the number of values that have 0 in previous year
+zero_previous_rank = f500["previous_rank"].value_counts().loc[0]
+print("Zero Previous Year: ", f500["previous_rank"].value_counts().loc[0])
+
+#Finding max values from numeric value columns
+max_f500 = f500.max(numeric_only=True)
+
+# The describe method is only for numeric columns
+# In order to use the describe for non numeric, we need to put (include=['O'])
+
+# Assignment
+top5_rank_revenue=f500.loc[:,["rank","revenues"]].head(5)
+print(top5_rank_revenue)
+
+top5_rank_revenue.loc["State Grid","revenues"]=999
+print(top5_rank_revenue)
+
+# Assigning new values in cell
+f500.loc["Dow Chemical","ceo"]="Jim Fitterling"
+
