@@ -59,3 +59,9 @@ print(top5_rank_revenue)
 # Assigning new values in cell
 f500.loc["Dow Chemical","ceo"]="Jim Fitterling"
 
+# Use boolean indexing to change all rows that meet the same criteria.
+#Making boolean Series first, and apply it on loc.
+
+motor_bool = f500["industry"] == "Motor Vehicles and Parts"
+
+motor_countries = f500.loc[motor_bool, "country"]
